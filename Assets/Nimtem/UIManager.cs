@@ -15,9 +15,19 @@ public sealed class UIManager : MonoBehaviour
             upgradeObj.Setup(gameManager, upgradeData);
         }
     }
-    [SerializeField] private TMP_Text m_moneyText;
+    [SerializeField] private TMP_Text moneyText;
+    [SerializeField] private TMP_Text moneyClickPowText;
+    [SerializeField] private TMP_Text moneyCpsText;
     public void UpdateMoneyText(float value)
     {
-        m_moneyText.text = $"{value.ToString("F2")}$";
+        moneyText.text = $"{value.ToString("F2")}$";
+    }
+    public void UpdateMoneyClickPowerText(float value)
+    {
+        moneyClickPowText.text = $"Click power: {value.ToString("F2")}$";
+    }
+    public void UpdateMoneyCpsText(float value)
+    {
+        moneyCpsText.text = $"CPS: {value.ToString("F2")}$";
     }
 }

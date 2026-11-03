@@ -11,21 +11,36 @@ public sealed class GameManager : MonoBehaviour
     private float clickPower = 1;
     public void AddCPS(float value)
     {
-        cps += value;
+        ChangeCPS(cps + value);
+    }
+    public void ChangeCPS(float value)
+    {
+        cps = value;
+        uiManager.UpdateMoneyCpsText(value);
     }
     public void AddClickPower(float value)
     {
-        clickPower += value;
+        ChangeClickPower(clickPower + value);
+    }
+    public void ChangeClickPower(float value)
+    {
+        clickPower = value;
+        uiManager.UpdateMoneyClickPowerText(value);
     }
     public void AddMoney(float value)
     {
-        money += value;
+        ChangeMoney(money + value);
+    }
+    public void ChangeMoney(float value)
+    {
+        money = value;
         uiManager.UpdateMoneyText(money);
     }
     public void Start()
     {
-        clickPower = 1;
-        uiManager.UpdateMoneyText(money);
+        ChangeClickPower(1);
+        ChangeMoney(0);
+        ChangeCPS(0);
         uiManager.SetupAllUpgrades(AllUpgrades);
         StartCoroutine(CoGameLoop());
     }
