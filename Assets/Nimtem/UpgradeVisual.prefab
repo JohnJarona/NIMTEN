@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.38679248, g: 0.2280616, b: 0.32524377, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81786eb8b3d2d514894f4f84a90ce14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeVisual
-  NameOfUpgradeText: {fileID: 7153737335148526697}
-  OwnedText: {fileID: 6936532174044411105}
-  CostText: {fileID: 4371433133095632656}
-  PowerText: {fileID: 5572372634241324913}
+  _nameOfUpgradeText: {fileID: 7153737335148526697}
+  _ownedText: {fileID: 6936532174044411105}
+  _costText: {fileID: 4371433133095632656}
+  _powerText: {fileID: 5572372634241324913}
 --- !u!114 &7300382363415806478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,14 +245,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  m_Color: {r: 0.49528304, g: 0.6603774, b: 0.6040037, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

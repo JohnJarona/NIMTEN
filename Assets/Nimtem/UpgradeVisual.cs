@@ -3,60 +3,61 @@ using UnityEngine;
 
 public sealed class UpgradeVisual : MonoBehaviour
 {
-    [SerializeField] private TMP_Text NameOfUpgradeText;
-    [SerializeField] private TMP_Text OwnedText;
-    [SerializeField] private TMP_Text CostText;
-    [SerializeField] private TMP_Text PowerText;
-    private UpgradeData m_MyData;
-    private int m_TimesOwned;
-    private float cost;
-    private GameManager gameManager;
+    [SerializeField] private TMP_Text _nameOfUpgradeText;
+    [SerializeField] private TMP_Text _ownedText;
+    [SerializeField] private TMP_Text _costText;
+    [SerializeField] private TMP_Text _powerText;
+    private UpgradeData _myData;
+    private int _timesOwned;
+    private float _cost;
+    private GameManager _gameManager;
     public void TryBuyUpgrade()
     {
-        if (gameManager.money >= cost)
+        float money = _gameManager.Money;
+        if (money >= _cost)
         {
-            switch (m_MyData.upgradeType)
+            switch (_myData.upgradeType)
             {
-                case UpgradeType.autoclick:
-                    gameManager.AddCPS(m_MyData.DataPower);
+                case UpgradeType.cps:
+                    _gameManager.SetCPS(_gameManager.CPS + _myData.DataPower);
                     break;
-                case UpgradeType.superclick:
-                    gameManager.AddClickPower(m_MyData.DataPower);
+                case UpgradeType.clickPower:
+                    _gameManager.SetClickPower(_gameManager.ClickPower + _myData.DataPower);
                     break;
             }
-            gameManager.AddMoney(-cost);
-            m_TimesOwned++;
+            _gameManager.SetMoney(money - _cost);
+            _timesOwned++;
             UpdateOwnedText();
-            cost = cost * 1.1f;
-            UpdateCostText();
+            _cost = _cost * 1.1f;
+            SetCostText();
         }
 
     }
     public void Setup(GameManager gm, UpgradeData data)
     {
-        gameManager = gm;
-        m_MyData = data;
+        _gameManager = gm;
+        _myData = data;
         UpdateOwnedText();
-        NameOfUpgradeText.text = data.NameOfUpgrade;
-        cost = data.UpgradeCost;
-        UpdateCostText();
+        _nameOfUpgradeText.text = data.NameOfUpgrade;
+        _cost = data.UpgradeCost;
+        SetCostText();
         switch (data.upgradeType)
         {
-            case UpgradeType.autoclick:
-                PowerText.text = $"CPS: {data.DataPower}";
+            case UpgradeType.cps:
+                _powerText.text = $"CPS: {data.DataPower}";
                 break;
-            case UpgradeType.superclick:
-                PowerText.text = $"Power: {data.DataPower}";
+            case UpgradeType.clickPower:
+                _powerText.text = $"Power: {data.DataPower}";
                 break;
         }
     }
-    private void UpdateCostText()
+    private void SetCostText()
     {
-        CostText.text = $"{cost.ToString("F2")}$";
+        _costText.text = $"{_cost.ToString("F2")}$";
     }
     private void UpdateOwnedText()
     {
-        OwnedText.text = $"Owned: {m_TimesOwned}";
+        _ownedText.text = $"Owned: {_timesOwned}";
     }
     
 }

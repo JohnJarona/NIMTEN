@@ -10,6 +10,6 @@ public sealed class UpgradeData : ScriptableObject
 }
 public enum UpgradeType
 {
-    autoclick,
-    superclick
+    cps,
+    clickPower
 }
