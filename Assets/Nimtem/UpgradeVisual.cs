@@ -1,5 +1,7 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public sealed class UpgradeVisual : MonoBehaviour
 {
@@ -7,6 +9,8 @@ public sealed class UpgradeVisual : MonoBehaviour
     [SerializeField] private TMP_Text _ownedText;
     [SerializeField] private TMP_Text _costText;
     [SerializeField] private TMP_Text _powerText;
+    [SerializeField] private RectTransform _effectRect;
+    [SerializeField] private Image _effectImg;
     private UpgradeData _myData;
     private int _timesOwned;
     private float _cost;
@@ -30,8 +34,21 @@ public sealed class UpgradeVisual : MonoBehaviour
             UpdateOwnedText();
             _cost = _cost * 1.1f;
             SetCostText();
-        }
 
+            _effectRect.localScale = Vector2.one;
+
+            _effectImg.color = Color.white;
+            _effectRect.DOKill();
+            _effectRect.DOScale(1.5f, 1f);
+            _effectImg.DOKill();
+            _effectImg.DOFade(0, 1f);
+        }
+        else
+        {
+            _costText.color = Color.red;
+            _costText.DOKill();
+            _costText.DOColor(Color.white, 1f);
+        }
     }
     public void Setup(GameManager gm, UpgradeData data)
     {
